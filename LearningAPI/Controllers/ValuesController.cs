@@ -26,5 +26,13 @@ namespace LearningAPI.Controllers
             var Values = dataRepository.GetAll();
             return Ok(Values);
         }
+
+        [HttpPost]
+        public IActionResult Add(Customer customer)
+        {
+            
+            dataRepository.Add(customer);
+            return Ok();
+        }
     }
 }

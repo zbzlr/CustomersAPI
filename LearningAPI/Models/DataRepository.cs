@@ -11,7 +11,8 @@ namespace LearningAPI.Models
 
         public void Add(Customer entity)
 		{
-			throw new NotImplementedException();
+			_context.Add(entity);
+			_context.SaveChanges();
 		}
 
 		public void Delete(Customer entity)
