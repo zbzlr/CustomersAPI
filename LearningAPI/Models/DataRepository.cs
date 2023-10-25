@@ -6,7 +6,7 @@ namespace LearningAPI.Models
         private AppDbContext _context { get; set; }
         public DataRepository(AppDbContext context)
         {
-			_context = context;	
+			_context = context;
         }
 
         public void Add(Customer entity)

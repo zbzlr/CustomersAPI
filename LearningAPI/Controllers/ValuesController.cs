@@ -12,11 +12,12 @@ namespace LearningAPI.Controllers
 	{
 		private readonly IDataRepository<Customer>? dataRepository;
 
-        AppDbContext _context;
+        private readonly AppDbContext _context;
 		public ValuesController(IDataRepository<Customer> dataRepository,AppDbContext context)
         {
             this.dataRepository = dataRepository;
             _context = context;
+            
         }
 
         [HttpGet]

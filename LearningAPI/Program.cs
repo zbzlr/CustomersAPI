@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
+
 var configuration = new ConfigurationBuilder()
 	.SetBasePath(Directory.GetCurrentDirectory())
 	.AddJsonFile("appsettings.json")
@@ -10,8 +11,9 @@ var configuration = new ConfigurationBuilder()
 
 // Add services to the container.
 
+
 builder.Services.AddScoped<IDataRepository<Customer>, DataRepository>();
-string connectionString = configuration.GetConnectionString("DefaultConStr");
+string connectionString = builder.Configuration.GetConnectionString("DefaultConStr");
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
 builder.Services.AddControllers();
 
