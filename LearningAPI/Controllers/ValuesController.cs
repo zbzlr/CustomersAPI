@@ -27,7 +27,7 @@ namespace LearningAPI.Controllers
             return Ok(Values);
         }
 
-        [HttpPost]
+        [HttpPost("LearningApi/Values{customer}")]
         public IActionResult Add(Customer customer)
         {
             dataRepository.Add(customer);
@@ -55,6 +55,14 @@ namespace LearningAPI.Controllers
                 return NotFound("Müşteri Bulunamadı");
             }
             dataRepository.Delete(customer);
+            return Ok();
+        }
+
+        [HttpPost("LearningApi/Values/UpdateCustomerName")]
+        public IActionResult Update(int id,string newName)
+        {
+            Customer customer = dataRepository.GetById(id);
+            dataRepository.Update(customer,newName);
             return Ok();
         }
     }

@@ -6,7 +6,7 @@
 
         T GetById(int id);
         void Add(T entity);
-        void Update(T entity);
+        void Update(T entity, string newName);
         void Delete(T entity);
 
     }

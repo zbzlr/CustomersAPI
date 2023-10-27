@@ -32,9 +32,15 @@ namespace LearningAPI.Models
 			return _context.customers.SingleOrDefault(x => x.id == Id);
 		}
 
-		public void Update(Customer entity)
+		public void Update(Customer entity, string newName)
 		{
-			throw new NotImplementedException();
+			Customer customerToUpdate = _context.customers.SingleOrDefault(x => x.id == entity.id);
+			if (customerToUpdate != null)
+			{
+				customerToUpdate.NameSurname = newName;
+				_context.SaveChanges();
+			}
+			else { throw new NotImplementedException(); }
 		}
 	}
 }
