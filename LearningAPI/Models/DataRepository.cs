@@ -15,9 +15,10 @@ namespace LearningAPI.Models
 			_context.SaveChanges();
 		}
 
-		public void Delete(Customer entity)
+		public void Delete(Customer customer)
 		{
-			throw new NotImplementedException();
+			_context.customers.Remove(customer);
+			_context.SaveChanges();
 		}
 
 		public IEnumerable<Customer> GetAll()
@@ -26,9 +27,9 @@ namespace LearningAPI.Models
 			return values;
 		}
 
-		public Customer GetById(int id)
+		public Customer GetById(int Id)
 		{
-			throw new NotImplementedException();
+			return _context.customers.SingleOrDefault(x => x.id == Id);
 		}
 
 		public void Update(Customer entity)

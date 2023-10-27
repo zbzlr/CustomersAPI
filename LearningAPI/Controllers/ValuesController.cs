@@ -20,7 +20,7 @@ namespace LearningAPI.Controllers
             
         }
 
-        [HttpGet]
+        [HttpGet("LearningAPI/Values")]
         public IActionResult Get()
         {
             var Values = dataRepository.GetAll();
@@ -30,8 +30,31 @@ namespace LearningAPI.Controllers
         [HttpPost]
         public IActionResult Add(Customer customer)
         {
-            
             dataRepository.Add(customer);
+            return Ok();
+        }
+
+        [HttpGet("LearningApi/Values{id}")]
+        public IActionResult GetById(int id)
+        {
+			Customer customer = dataRepository.GetById(id);
+			if (customer == null)
+			{
+				return NotFound("Müşteri bulunamadı"); 
+			}
+			return Ok(customer);
+		}
+
+        [HttpDelete]
+        public IActionResult Delete(int id)
+        {
+            Customer customer = dataRepository.GetById(id);
+
+            if (customer == null)
+            {
+                return NotFound("Müşteri Bulunamadı");
+            }
+            dataRepository.Delete(customer);
             return Ok();
         }
     }
